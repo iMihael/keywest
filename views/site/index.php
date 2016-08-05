@@ -6,48 +6,107 @@ $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+    <pre>
+API Documentation
+=====================
+Add bookmark
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+paths:
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+    /bookmark/add:
+        POST:
+            summary: Create bookmark
+            parameters:
+                - name: url
+                  in: formData
+                  description: bookmark url
+                  required: true
+                  type: string
+            responses:
+                200:
+                    description: bookmark created
+                422:
+                    description: validation error
 
-    <div class="body-content">
+    /comment/add/{uid}:
+        POST:
+            summary: Add comment
+            parameters:
+                - name: uid
+                  in: path
+                  description: bookmark uid
+                  required: true
+                  type: int
+                - name: text
+                  in: formData
+                  required: true
+                  type: string
+            responses:
+                200:
+                    description: comment added
+                422:
+                    description: validation error
+                404:
+                    description: bookmark not found
+    /bookmark/latest:
+        GET:
+            summary: Get latest bookmarks
+            responses:
+                200:
+                    description: list of bookmarks
+    /bookmark/get/{uid}
+        GET:
+            summary: Get bookmark with comments by uid
+            parameters:
+                - name: uid
+                  in: path
+                  description: bookmark uid
+                  required: true
+                  type: int
+            responses:
+                200:
+                    description: successfully get bookmark
+                404:
+                    description: bookmark not found
+    /comment/update/{uid}
+        POST:
+            summary: Update comment by comment uid
+            parameters:
+                - name: uid
+                  in: path
+                  description: comment uid
+                  required: true
+                  type: int
+                - name: text
+                  in: formData
+                  required: true
+                  type: string
+            responses:
+                200:
+                    description: comment updated
+                422:
+                    description: validation error
+                404:
+                    description: bookmark not found
+    /comment/delete/{uid}
+            GET:
+                summary: Delete comment by comment uid
+                parameters:
+                    - name: uid
+                      in: path
+                      description: comment uid
+                      required: true
+                      type: int
+                responses:
+                    204:
+                        description: comment deleted
+                    422:
+                        description: validation error
+                    404:
+                        description: bookmark not found
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+    </pre>
 </div>

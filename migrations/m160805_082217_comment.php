@@ -2,10 +2,8 @@
 
 use yii\db\Migration;
 
-class m160805_082217_comment extends Migration
-{
-    public function up()
-    {
+class m160805_082217_comment extends Migration {
+    public function up() {
         $this->createTable('comment', [
             'id' => $this->primaryKey(),
             'created_at' => $this->dateTime(),
@@ -17,8 +15,7 @@ class m160805_082217_comment extends Migration
         $this->addForeignKey('fk_bookmark', 'comment', 'bookmark_id', 'bookmark', 'id', 'CASCADE', 'CASCADE');
     }
 
-    public function down()
-    {
+    public function down() {
         $this->dropTable('comment');
     }
 

@@ -2,10 +2,8 @@
 
 use yii\db\Migration;
 
-class m160805_082038_bookmark extends Migration
-{
-    public function up()
-    {
+class m160805_082038_bookmark extends Migration {
+    public function up() {
         $this->createTable('bookmark', [
             'id' => $this->primaryKey(),
             'created_at' => $this->dateTime(),
@@ -13,8 +11,7 @@ class m160805_082038_bookmark extends Migration
         ]);
     }
 
-    public function down()
-    {
+    public function down() {
         $this->dropTable('bookmark');
     }
 

@@ -11,17 +11,17 @@ class CommentController extends BaseController {
     public function actionAdd($uid) {
         $model = new Comment();
         $model->bookmark_id = $uid;
-        if($model->load(\Yii::$app->request->post(), '') && $model->validate()) {
+        if ($model->load(\Yii::$app->request->post(), '') && $model->validate()) {
             $model->save();
         }
         return $model;
     }
 
     public function actionUpdate($uid) {
-        if($comment = Comment::findOne($uid)) {
+        if ($comment = Comment::findOne($uid)) {
             $comment->setScenario('update');
             $comment->text = \Yii::$app->request->post('text');
-            if($comment->validate()) {
+            if ($comment->validate()) {
                 $comment->save();
             }
 
@@ -32,9 +32,9 @@ class CommentController extends BaseController {
     }
 
     public function actionDelete($uid) {
-        if($comment = Comment::findOne($uid)) {
+        if ($comment = Comment::findOne($uid)) {
             $comment->setScenario('update');
-            if($comment->validate()) {
+            if ($comment->validate()) {
                 $comment->delete();
                 \Yii::$app->response->statusCode = 204;
             } else {
@@ -43,7 +43,5 @@ class CommentController extends BaseController {
         } else {
             throw new NotFoundHttpException();
         }
-
-
     }
 }
