@@ -45,7 +45,8 @@ $config = [
             'rules' => [
                 '/comment/add/<uid:\d>' => '/comment/add',
                 '/bookmark/get/<uid:\d>' => '/bookmark/get',
-                '/comment/update/<uid:\d>' => '/comment/update'
+                '/comment/update/<uid:\d>' => '/comment/update',
+                '/comment/delete/<uid:\d>' => '/comment/delete'
             ],
         ],
 

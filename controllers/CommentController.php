@@ -36,9 +36,14 @@ class CommentController extends BaseController {
             $comment->setScenario('update');
             if($comment->validate()) {
                 $comment->delete();
+                \Yii::$app->response->statusCode = 204;
+            } else {
+                return $comment;
             }
+        } else {
+            throw new NotFoundHttpException();
         }
 
-        \Yii::$app->response->statusCode = 204;
+
     }
 }

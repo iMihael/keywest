@@ -90,6 +90,22 @@ paths:
                     description: validation error
                 404:
                     description: bookmark not found
+    /comment/delete/{uid}
+            GET:
+                summary: Delete comment by comment uid
+                parameters:
+                    - name: uid
+                      in: path
+                      description: comment uid
+                      required: true
+                      type: int
+                responses:
+                    204:
+                        description: comment deleted
+                    422:
+                        description: validation error
+                    404:
+                        description: bookmark not found
 
 
 
