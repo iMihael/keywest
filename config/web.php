@@ -38,14 +38,17 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/comment/add/<uid:\d>' => '/comment/add',
+                '/bookmark/get/<uid:\d>' => '/bookmark/get',
+                '/comment/update/<uid:\d>' => '/comment/update'
             ],
         ],
-        */
+
     ],
     'params' => $params,
 ];
